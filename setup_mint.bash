@@ -30,3 +30,8 @@ install_git() {
 install_vlc() {
   sudo apt install -y vlc
 }
+
+main() {
+
+}
+
