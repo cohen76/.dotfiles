@@ -1,5 +1,6 @@
 config_system() {
   xdg-settings set default-web-browser 'brave-browser.desktop'
+  gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 }
 
 config_gnome() {
@@ -33,6 +34,18 @@ install_vlc() {
 
 install_gdebi() {
   sudo apt install -y gdebi
+}
+
+install_zsh() {
+  sudo apt install -y zsh
+}
+
+install_ohmyzsh() {
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+}
+
+config_ohmyzsh() {
+  chsh -s $(which zsh)
 }
 
 install_deb() {
