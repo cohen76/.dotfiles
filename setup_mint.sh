@@ -48,6 +48,14 @@ config_ohmyzsh() {
   chsh -s $(which zsh)
 }
 
+install_pnpm() {
+  curl -fsSL https://get.pnpm.io/install.sh | sh -
+}
+
+install_node() {
+  pnpm env use --global lts
+}
+
 install_deb() {
   local url=${1}
   local temp=$(mktemp)
