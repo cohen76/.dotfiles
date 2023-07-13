@@ -58,6 +58,14 @@ install_node () {
   pnpm env use --global lts
 }
 
+install_rustup () {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+}
+
+install_poetry () {
+  curl -sSL https://install.python-poetry.org | python3 -
+}
+
 install_deb () {
   local url=${1}
   local temp=$(mktemp)
