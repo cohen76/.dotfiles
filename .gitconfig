@@ -1,7 +1,0 @@
-[init]
-        defaultBranch = main
-[user]
-        email = cohen76@proton.me
-        name = Jacob Cohen
-[core]
-        editor = nvim

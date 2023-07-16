@@ -2,6 +2,6 @@
 	name = cohen76
 	email = cohen76@skiff.com
 [credential]
-	helper = cache
+	helper = libsecret
 [init]
 	defaultBranch = main

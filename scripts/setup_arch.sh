@@ -31,6 +31,10 @@ install_zsh () {
   sudo pacman --sync --noconfirm zsh
 }
 
+install_opensecret () {
+  sudo pacman --sync --noconfirm libsecret
+}
+
 install_from_aur () {
   local package="$1"
   local tempdir="$(mktemp --directory)"
