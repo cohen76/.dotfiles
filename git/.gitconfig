@@ -1,0 +1,7 @@
+[user]
+	name = cohen76
+	email = cohen76@skiff.com
+[credential]
+	helper = cache
+[init]
+	defaultBranch = main
