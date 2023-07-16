@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 
-make_symlink () {
-  local SRC=${1}
-  local DST=${2}
-  ln --symbolic ${SRC} ${DST}
+process_links_prop_line () {
+  local line="$1"
+  if [ -z "$line" ]; then
+    return 1
+  fi
+  local src="$(eval echo "$line" | cut --delimiter '=' --fields 1)"
+  local dst="$(eval echo "$line" | cut --delimiter '=' --fields 2)"
+  echo "src='${src}' dst='${dst}'"
+  # ln --symbolic "$src" "$dst"
 }
 
-process_links () {
-  local FILENAME="${1}"
-  echo "FILENAME=${FILENAME}"
-  cat "${FILENAME}"
-}
-
-DOTFILES=$(cd "$(dirname "${0}")/.." && pwd -P)
-find "${DOTFILES}" -name 'links.prop' | while read filename; do
-    
+DOTFILES=$(cd "$(dirname "$0")/.." && pwd -P)
+find "$DOTFILES" -name 'links.prop' | while read -r filename; do
+  while read -r line; do
+    process_links_prop_line "$line"
+  done < "$filename"
 done
 
-echo $(eval echo '$DOTFILES/git/gitignore=$HOME/.gitignore' | cut --delimiter '=' --fields 1)
-echo $(eval echo '$DOTFILES/git/gitignore=$HOME/.gitignore' | cut --delimiter '=' --fields 2)
