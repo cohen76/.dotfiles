@@ -27,6 +27,10 @@ install_pip () {
   sudo pacman --sync --noconfirm python-pip
 }
 
+install_zsh () {
+  sudo pacman --sync --noconfirm zsh
+}
+
 install_from_aur () {
   local PACKAGE_NAME=$1
   local TEMP_DIR=$(mktemp --directory)
