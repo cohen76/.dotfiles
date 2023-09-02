@@ -11,10 +11,9 @@ process_links_prop_line () {
   # ln --symbolic "$src" "$dst"
 }
 
-DOTFILES=$(cd "$(dirname "$0")/.." && pwd -P)
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd -P)"
 find "$DOTFILES" -name 'links.prop' | while read -r filename; do
   while read -r line; do
     process_links_prop_line "$line"
   done < "$filename"
 done
-
