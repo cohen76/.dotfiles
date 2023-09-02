@@ -37,7 +37,7 @@ setup_github_ssh_key() {
   cat  "$publickey"
   echo
   echo 'Add the following line to your shell profile (e.g., .zshenv or .bash_profile):'
-  echo 'eval $(keychain --eval --agents ssh' "'${keyname}')"
+  echo 'eval $(keychain --quiet --eval --agents ssh' "'${keyname}')"
   echo
   echo 'To test your setup run the following command:'
   echo 'ssh -T git@github.com'
