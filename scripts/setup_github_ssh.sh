@@ -14,30 +14,33 @@ sanitize_filename() {
 }
 
 setup_github_ssh_key() {
-  local email passphrase
-  read -rp  'email:      ' email
+  local comment passphrase
+  read -rp  'comment:    ' comment
   read -rsp 'passphrase: ' passphrase
   echo && echo
 
-  local -r keyname="$(sanitize_filename "github__${email//@/_at_}")"
+  local -r keyname="$(sanitize_filename "github_${comment}")"
   local -r keyfile="${HOME}/.ssh/${keyname}"
   local -r publickey="${keyfile}.pub"
 
-  echo "Generating SSH key"
-  ssh-keygen -q -t ed25519 -C "$email" -f "$keyfile" -N "$passphrase"
+  echo 'Generating SSH key'
+  ssh-keygen -q -t ed25519 -C "$comment" -f "$keyfile" -N "$passphrase"
   echo
-
-  echo "Paste the following into https://github.com/settings/ssh/new"
+  echo 'Submit the following into the form at https://github.com/settings/ssh/new:'
+  echo 'Title:'
   echo "$(whoami)@$(uname -n)"
+  echo
+  echo 'Key type:'
+  echo 'Authentication Key'
+  echo
+  echo 'Key:'
   cat  "$publickey"
   echo
-
   echo 'Add the following line to your shell profile (e.g., .zshenv or .bash_profile):'
   echo 'eval $(keychain --eval --agents ssh' "'${keyname}')"
   echo
-
-  echo 'Use the follow command to configure git to globally use ssh instead of https:'
-  echo 'git config --global url.ssh://git@github.com/.insteadOf https://github.com/'
+  echo 'To test your setup run the following command:'
+  echo 'ssh -T git@github.com'
 }
 
 setup_github_ssh_key
