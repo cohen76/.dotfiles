@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-process_links_prop_line () {
-  local line="$1"
-  if [ -z "$line" ]; then
+process_links_prop_line() {
+  local -r line="$1"
+  if [[ -z "$line" ]]; then
     return 1
   fi
   local src="$(eval echo "$line" | cut --delimiter '=' --fields 1)"
