@@ -31,7 +31,9 @@ install_programs() {
   sudo pacman --sync --noconfirm 'neofetch'
   sudo pacman --sync --noconfirm 'neovim'
   sudo pacman --sync --noconfirm 'pass'
+  sudo pacman --sync --noconfirm 'pinentry'
   sudo pacman --sync --noconfirm 'python-pip'
+  sudo pacman --sync --noconfirm 'qt5-base'
   sudo pacman --sync --noconfirm 'rustup'
   sudo pacman --sync --noconfirm 'zsh'
 
