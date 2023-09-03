@@ -19,6 +19,9 @@ install_from_aur() {
 }
 
 install_programs() {
+  sudo pacman --sync --noconfirm 'browserpass-chromium'
+  sudo pacman --sync --noconfirm 'browserpass-firefox'
+  sudo pacman --sync --noconfirm 'browserpass'
   sudo pacman --sync --noconfirm 'discord'
   sudo pacman --sync --noconfirm 'dnsutils'   # installs nslookup
   sudo pacman --sync --noconfirm 'git'
@@ -27,6 +30,7 @@ install_programs() {
   sudo pacman --sync --noconfirm 'man-db'
   sudo pacman --sync --noconfirm 'neofetch'
   sudo pacman --sync --noconfirm 'neovim'
+  sudo pacman --sync --noconfirm 'pass'
   sudo pacman --sync --noconfirm 'python-pip'
   sudo pacman --sync --noconfirm 'rustup'
   sudo pacman --sync --noconfirm 'zsh'
