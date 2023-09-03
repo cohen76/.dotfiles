@@ -21,10 +21,13 @@ expand() {
 }
 
 process_links_prop_line() {
-  [[ -z "$1" ]] && return 1
-  local -r expanded_line="$(eval echo "\"${1}\"")"
-  local -r src="$(echo "$expanded_line" | awk -F '=>' '{print $1}' | trim_whitespace)"
-  local -r dst="$(echo "$expanded_line" | awk -F '=>' '{print $2}' | trim_whitespace)"
+  local input="$1"
+  if [[ -z "$input" ]]; then
+    input="$(cat)"
+  fi
+  local -r src="$(echo "$input" | awk -F '=>' '{print $1}' | trim_whitespace | expand)"
+  local -r dst="$(echo "$input" | awk -F '=>' '{print $2}' | trim_whitespace | expand)"
+  mkdir --parents "$(dirname "$dst")"
   ln --force --symbolic "$src" "$dst"
 }
 

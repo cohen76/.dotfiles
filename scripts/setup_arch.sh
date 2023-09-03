@@ -23,10 +23,8 @@ install_programs() {
   sudo pacman --sync --noconfirm 'browserpass-firefox'
   sudo pacman --sync --noconfirm 'browserpass'
   sudo pacman --sync --noconfirm 'discord'
-  sudo pacman --sync --noconfirm 'dnsutils'   # installs nslookup
   sudo pacman --sync --noconfirm 'git'
   sudo pacman --sync --noconfirm 'keychain'
-  sudo pacman --sync --noconfirm 'libsecret'  # might not need this if I can figure out ssh keys for GitHub
   sudo pacman --sync --noconfirm 'man-db'
   sudo pacman --sync --noconfirm 'neofetch'
   sudo pacman --sync --noconfirm 'neovim'
