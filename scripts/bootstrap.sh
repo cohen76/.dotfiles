@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-trim_whitespace() {
+function trim_whitespace() {
   local input="$1"
   if [[ -z "$input" ]]; then
     input="$(cat)"
@@ -12,7 +12,7 @@ trim_whitespace() {
   echo "$input"
 }
 
-expand() {
+function expand() {
   local input="$1"
   if [[ -z "$input" ]]; then
     input="$(cat)"
@@ -20,7 +20,7 @@ expand() {
   echo "$(eval echo "$input")"
 }
 
-process_links_prop_line() {
+function process_links_prop_line() {
   local input="$1"
   if [[ -z "$input" ]]; then
     input="$(cat)"

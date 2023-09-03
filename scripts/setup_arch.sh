@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-install_from_aur() {
+function install_from_aur() {
   local -r package="$1"
   if [[ -z "$package" ]]; then 
     echo "install_from_aur: missing package name"
@@ -18,7 +18,7 @@ install_from_aur() {
   rm --recursive --force "$tempdir"
 }
 
-install_programs() {
+function install_programs() {
   sudo pacman --sync --noconfirm 'browserpass-chromium'
   sudo pacman --sync --noconfirm 'browserpass-firefox'
   sudo pacman --sync --noconfirm 'browserpass'
@@ -41,7 +41,7 @@ install_programs() {
   paru --sync --noconfirm 'vscodium-bin'
 }
 
-config_system() {
+function config_system() {
   sudo chsh --shell "$(which zsh)"
 
   # sets tab & shift + tab to navigate between terminal tabs
@@ -50,7 +50,7 @@ config_system() {
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
-setup_arch() {
+function setup_arch() {
   install_programs
   config_system
 }

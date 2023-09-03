@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sanitize_filename() {
+function sanitize_filename() {
   local input="$1"
   if [[ -z "$input" ]]; then
     echo "sanitize_filename: string argument expected"
@@ -13,7 +13,7 @@ sanitize_filename() {
   echo "$input"
 }
 
-setup_github_ssh_key() {
+function setup_github_ssh_key() {
   local comment passphrase
   read -rp  'comment:    ' comment
   read -rsp 'passphrase: ' passphrase
