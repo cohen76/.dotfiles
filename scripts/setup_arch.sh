@@ -20,7 +20,6 @@ function install_from_aur() {
 
 function install_programs() {
   sudo pacman --sync --noconfirm 'browserpass-chromium'
-  sudo pacman --sync --noconfirm 'browserpass-firefox'
   sudo pacman --sync --noconfirm 'browserpass'
   sudo pacman --sync --noconfirm 'discord'
   sudo pacman --sync --noconfirm 'git'
@@ -36,7 +35,6 @@ function install_programs() {
   sudo pacman --sync --noconfirm 'zsh'
 
   install_from_aur 'paru-bin'
-  paru --sync --noconfirm 'librewolf-bin'
   paru --sync --noconfirm 'brave-bin'
   paru --sync --noconfirm 'vscodium-bin'
 }
