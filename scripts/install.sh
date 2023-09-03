@@ -1,14 +1,31 @@
 #!/usr/bin/env bash
 
-process_links_prop_line() {
-  local -r line="$1"
-  if [[ -z "$line" ]]; then
-    return 1
+trim_whitespace() {
+  local input="$1"
+  if [[ -z "$input" ]]; then
+    input="$(cat)"
   fi
-  local src="$(eval echo "$line" | cut --delimiter '=' --fields 1)"
-  local dst="$(eval echo "$line" | cut --delimiter '=' --fields 2)"
-  echo "src='${src}' dst='${dst}'"
-  # ln --symbolic "$src" "$dst"
+  local -r l_whitespace="${input%%[![:space:]]*}"
+  local -r r_whitespace="${input##*[![:space:]]}"
+  input="${input##${l_whitespace}}"
+  input="${input%%${r_whitespace}}"
+  echo "$input"
+}
+
+expand() {
+  local input="$1"
+  if [[ -z "$input" ]]; then
+    input="$(cat)"
+  fi
+  echo "$(eval echo "$input")"
+}
+
+process_links_prop_line() {
+  [[ -z "$1" ]] && return 1
+  local -r expanded_line="$(eval echo "\"${1}\"")"
+  local -r src="$(echo "$expanded_line" | awk -F '=>' '{print $1}' | trim_whitespace)"
+  local -r dst="$(echo "$expanded_line" | awk -F '=>' '{print $2}' | trim_whitespace)"
+  ln --force --symbolic "$src" "$dst"
 }
 
 DOTFILES="$(cd "$(dirname "$0")/.." && pwd -P)"

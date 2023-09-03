@@ -1,7 +1,7 @@
 [user]
-	name = cohen76
 	email = cohen76@skiff.com
-[credential]
-	helper = libsecret
+	name = Jacob Cohen
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [init]
-	defaultBranch = main
+	defaultBranch = main| enabled

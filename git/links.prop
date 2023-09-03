@@ -1,1 +1,1 @@
-$DOTFILES/git/.gitconfig=$HOME/.zshrc
+${DOTFILES}/git/.gitconfig => ${HOME}/.gitconfig
