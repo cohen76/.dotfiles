@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 function install_from_aur() {
-  local -r package="$1"
-  if [[ -z "$package" ]]; then 
-    echo "install_from_aur: missing package name"
-    return 1
-  fi
+  [[ -n "$1" ]] && local -r package="$1" || local -r package="$(cat)"
   local -r tempdir="$(mktemp --directory --tmpdir="$(pwd)" 'install_from_aur.XXXXXX')"
   if ! git clone "https://aur.archlinux.org/${package}.git" "$tempdir"; then 
     echo "install_from_aur: git clone: ${package}: no such package or network issue"
@@ -29,6 +25,7 @@ function install_programs() {
   sudo pacman --sync --noconfirm 'neovim'
   sudo pacman --sync --noconfirm 'pass'
   sudo pacman --sync --noconfirm 'pinentry'
+  sudo pacman --sync --noconfirm 'pnpm'
   sudo pacman --sync --noconfirm 'python-pip'
   sudo pacman --sync --noconfirm 'qt5-base'
   sudo pacman --sync --noconfirm 'rustup'

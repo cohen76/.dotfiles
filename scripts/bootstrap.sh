@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 function trim_whitespace() {
-  local input="$1"
-  if [[ -z "$input" ]]; then
-    input="$(cat)"
-  fi
+  [[ -n "$1" ]] && local input="$1" || local input="$(cat)"
   local -r l_whitespace="${input%%[![:space:]]*}"
   local -r r_whitespace="${input##*[![:space:]]}"
   input="${input##${l_whitespace}}"
@@ -13,18 +10,12 @@ function trim_whitespace() {
 }
 
 function expand() {
-  local input="$1"
-  if [[ -z "$input" ]]; then
-    input="$(cat)"
-  fi
-  echo "$(eval echo "$input")"
+  [[ -n "$1" ]] && local -r input="$1" || local -r input="$(cat)"
+  echo "$(eval echo \""$input"\")"
 }
 
 function process_links_prop_line() {
-  local input="$1"
-  if [[ -z "$input" ]]; then
-    input="$(cat)"
-  fi
+  [[ -n "$1" ]] && local -r input="$1" || local -r input="$(cat)"
   local -r src="$(echo "$input" | awk -F '=>' '{print $1}' | trim_whitespace | expand)"
   local -r dst="$(echo "$input" | awk -F '=>' '{print $2}' | trim_whitespace | expand)"
   mkdir --parents "$(dirname "$dst")"
