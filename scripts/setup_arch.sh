@@ -37,6 +37,10 @@ function install_programs() {
   paru --sync --noconfirm 'vscodium-bin'
 }
 
+function install_zap() {
+  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+}
+
 function config_system() {
   sudo chsh --shell "$(which zsh)"
 
@@ -50,3 +54,4 @@ function setup_arch() {
   install_programs
   config_system
 }
+
