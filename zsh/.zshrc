@@ -10,19 +10,19 @@ autoload -Uz compinit
 compinit
 
 # Custom setup
-function setup_keychain() {
+function init_keychain() {
   eval "$(keychain --quiet --eval --agents ssh 'github_cohen76')"
 }
 
-function setup_nvm() {
+function init_nvm() {
   export NVM_DIR="$HOME/.nvm"
   . '/usr/share/nvm/nvm.sh'
   . '/usr/share/nvm/bash_completion'
   . '/usr/share/nvm/install-nvm-exec'
 }
 
-setup_keychain
-setup_nvm
+init_keychain
+init_nvm
 
 export EDITOR='nvim'
 
