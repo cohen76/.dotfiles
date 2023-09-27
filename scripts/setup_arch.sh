@@ -27,6 +27,7 @@ function install_programs() {
   sudo pacman --sync --noconfirm 'pinentry'
   sudo pacman --sync --noconfirm 'pnpm'
   sudo pacman --sync --noconfirm 'python-pip'
+  sudo pacman --sync --noconfirm 'python-poetry'
   sudo pacman --sync --noconfirm 'qt5-base'
   sudo pacman --sync --noconfirm 'rustup'
   sudo pacman --sync --noconfirm 'zsh'
