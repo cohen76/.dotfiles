@@ -23,6 +23,7 @@ function install_programs() {
   sudo pacman --sync --noconfirm 'man-db'
   sudo pacman --sync --noconfirm 'neofetch'
   sudo pacman --sync --noconfirm 'neovim'
+  sudo pacman --sync --noconfirm 'nerd-fonts'
   sudo pacman --sync --noconfirm 'pass'
   sudo pacman --sync --noconfirm 'pinentry'
   sudo pacman --sync --noconfirm 'pnpm'
@@ -54,4 +55,3 @@ function setup_arch() {
   install_programs
   config_system
 }
-
